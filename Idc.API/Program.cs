@@ -1,9 +1,30 @@
 
+using System;
+using System.IO;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Csw.Application.Extensions;
 using Csw.Domain.Entities;
 using Csw.Infrastructure.Extensions;
 using Idc.API.Extensions;
 using Idc.API.MiddleWares;
+
+// Load environment variables from .env file
+if (File.Exists(".env"))
+{
+	foreach (var line in File.ReadAllLines(".env"))
+	{
+		if (!string.IsNullOrWhiteSpace(line) && !line.StartsWith("#"))
+		{
+			var parts = line.Split('=', 2, StringSplitOptions.RemoveEmptyEntries);
+			if (parts.Length == 2)
+			{
+				Environment.SetEnvironmentVariable(parts[0], parts[1]);
+			}
+		}
+	}
+}
 
 var builder = WebApplication.CreateBuilder(args);
 
