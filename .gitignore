@@ -120,15 +120,22 @@ Desktop.ini
 .AppleDouble
 .
 
-# Sensitive configuration files
-appsettings.json
-appsettings.Development.json
-appsettings.Production.json
-# But keep the templates
-!appsettings.template.json
+# Add these rules to your existing .gitignore file
 
 # Sensitive configuration files
-appsettings.Development.json
-appsettings.Production.json
+**/appsettings.Development.json
+**/appsettings.Production.json
+**/appsettings.json
+!**/appsettings.template.json
+!**/appsettings.Development.template.json
+
+# Environment files
+**/.env
+**/.env.local
+**/.env.development
+**/.env.test
+**/.env.production
+!**/.env.example
+
 
 
