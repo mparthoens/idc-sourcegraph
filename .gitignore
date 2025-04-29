@@ -118,4 +118,17 @@ Desktop.ini
 # macOS specific
 .DS_Store
 .AppleDouble
-.LSOverride
+.
+
+# Sensitive configuration files
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+# But keep the templates
+!appsettings.template.json
+
+# Sensitive configuration files
+appsettings.Development.json
+appsettings.Production.json
+
+

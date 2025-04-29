@@ -1,4 +1,3 @@
-
 using System;
 using System.IO;
 using Microsoft.AspNetCore.Builder;
@@ -28,8 +27,14 @@ if (File.Exists(".env"))
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Override connection string from environment variable if available
+if (!string.IsNullOrEmpty(Environment.GetEnvironmentVariable("CENTRAL_DB_CONNECTION_STRING")))
+{
+	builder.Configuration["ConnectionStrings:CentralDb"] =
+			Environment.GetEnvironmentVariable("CENTRAL_DB_CONNECTION_STRING");
+}
 
+// Add services to the container.
 builder.AddPresentation();
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
@@ -39,20 +44,19 @@ var app = builder.Build();
 var scope = app.Services.CreateScope();
 
 // Configure the HTTP request pipeline.
-
 app.UseMiddleware<ErrorHandlingMiddleWare>();
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+	app.UseSwagger();
+	app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
 app.MapGroup("api/identity")
-    .WithTags("Identity")
-    .MapIdentityApi<AspNetUser>();
+		.WithTags("Identity")
+		.MapIdentityApi<AspNetUser>();
 
 app.UseAuthorization();
 
