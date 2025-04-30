@@ -1,13 +1,14 @@
+// src/components/Topbar.tsx
 import {
   AppBar,
   Toolbar,
-  Typography,
   Box,
   IconButton,
   useMediaQuery,
   Theme,
 } from '@mui/material';
 import LanguageSwitcher from './LanguageSwitcher';
+import ThemeToggle from '../ThemeToggle';
 import MenuIcon from '@mui/icons-material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
@@ -17,17 +18,15 @@ import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 interface TopbarProps {
   /** Callback function for mobile menu button click */
   onMenuClick?: () => void;
-
   /** Callback function for desktop menu button click */
   onDesktopMenuClick?: () => void;
-
   /** Boolean indicating if the desktop sidebar is open */
   isDesktopOpen?: boolean;
 }
 
 /**
- * Topbar component that displays the application header with navigation controls
- * and language switcher. It adapts to different screen sizes and provides
+ * Topbar component that displays the application header with navigation controls,
+ * language switcher, and theme toggle. It adapts to different screen sizes and provides
  * controls for toggling the sidebar visibility.
  *
  * @param {TopbarProps} props - Component props
@@ -57,7 +56,6 @@ const Topbar = ({
             <MenuIcon />
           </IconButton>
         )}
-
         {/* Desktop menu toggle button - only visible on desktop */}
         {isDesktop && onDesktopMenuClick && (
           <IconButton
@@ -70,7 +68,6 @@ const Topbar = ({
             {isDesktopOpen ? <MenuOpenIcon /> : <MenuIcon />}
           </IconButton>
         )}
-
         {/* Application logo */}
         <Box sx={{ display: 'flex', alignItems: 'center', flexGrow: 1 }}>
           {/* Logo image */}
@@ -83,14 +80,14 @@ const Topbar = ({
               mr: 1,
             }}
           />
-
           {/* Removed the ID Chips text */}
         </Box>
-
         {/* Right-side controls container */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {/* Language selection dropdown */}
           <LanguageSwitcher />
+          {/* Theme toggle button */}
+          <ThemeToggle />
         </Box>
       </Toolbar>
     </AppBar>
