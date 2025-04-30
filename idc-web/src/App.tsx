@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { ThemeProvider, CssBaseline } from '@mui/material';
+import { CssBaseline } from '@mui/material';
 import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import GDPR from './pages/GDPR';
-import ThemeShowcase from './pages/ThemeShowCase'; // Add this import
-import theme from './theme/theme';
+import ThemeShowcase from './pages/ThemeShowCase';
+import { ThemeProvider } from './contexts/ThemeContext';
 
 // Import i18n configuration to enable translations
 import './i18n/i18n';
@@ -18,8 +18,8 @@ import './i18n/i18n';
  */
 function App() {
   return (
-    // Apply the custom theme to all Material-UI components
-    <ThemeProvider theme={theme}>
+    // Apply our custom ThemeProvider that supports theme toggling
+    <ThemeProvider>
       {/* CssBaseline normalizes browser styles */}
       <CssBaseline />
       {/* Router setup for navigation */}
@@ -44,7 +44,7 @@ function App() {
               path='gdpr'
               element={<GDPR />}
             />
-            {/* Theme showcase page - add this route */}
+            {/* Theme showcase page */}
             <Route
               path='theme-showcase'
               element={<ThemeShowcase />}
