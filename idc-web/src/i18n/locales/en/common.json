@@ -3,7 +3,8 @@
 	"navigation": {
 		"home": "Home",
 		"contact": "Contact",
-		"gdpr": "GDPR"
+		"gdpr": "GDPR",
+		"themeShowcase": "Theme Showcase"
 	},
 	"language": {
 		"en": "English",
@@ -16,5 +17,9 @@
 		"cancel": "Cancel",
 		"save": "Save",
 		"delete": "Delete"
+	},
+	"theme": {
+		"switchToLight": "Switch to light theme",
+		"switchToDark": "Switch to dark theme"
 	}
 }

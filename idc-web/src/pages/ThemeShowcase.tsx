@@ -38,8 +38,12 @@ import {
   Info as InfoIcon,
   Warning as WarningIcon,
   Error as ErrorIcon,
-  CheckCircle as CheckCircleIcon
+  CheckCircle as CheckCircleIcon,
+  DarkMode as DarkModeIcon,
+  LightMode as LightModeIcon
 } from '@mui/icons-material';
+import { useThemeContext } from '../contexts/ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 /**
  * ThemeShowcase component displays various Material-UI components
@@ -48,10 +52,13 @@ import {
 const ThemeShowcase = () => {
   // Access the theme object
   const theme = useTheme();
+  // Access the theme context for mode information
+  const { mode, toggleColorMode } = useThemeContext();
+  // Access translations
+  const { t } = useTranslation();
 
   // State for tabs
   const [tabValue, setTabValue] = React.useState(0);
-
   // Handler for tab changes
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -62,8 +69,40 @@ const ThemeShowcase = () => {
       <Typography
         variant='h2'
         gutterBottom>
-        Theme Showcase
+        {t('navigation.themeShowcase', 'Theme Showcase')}
       </Typography>
+
+      {/* Current Theme Mode Display */}
+      <Paper
+        sx={{
+          p: 3,
+          mb: 4,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+        }}>
+        <Box>
+          <Typography
+            variant='h5'
+            gutterBottom>
+            Current Theme Mode: <strong>{mode}</strong>
+          </Typography>
+          <Typography variant='body1'>
+            This page displays all the styled components using our custom theme
+            in {mode} mode.
+          </Typography>
+        </Box>
+        <Button
+          variant='contained'
+          color='primary'
+          onClick={toggleColorMode}
+          startIcon={mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}>
+          {mode === 'light'
+            ? t('theme.switchToDark', 'Switch to dark theme')
+            : t('theme.switchToLight', 'Switch to light theme')}
+        </Button>
+      </Paper>
+
       <Typography
         variant='subtitle1'
         gutterBottom
@@ -79,7 +118,6 @@ const ThemeShowcase = () => {
           Typography
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Typography
           variant='h1'
           gutterBottom>
@@ -162,7 +200,6 @@ const ThemeShowcase = () => {
           Colors
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={2}>
@@ -211,7 +248,6 @@ const ThemeShowcase = () => {
               </Typography>
             </Box>
           </Grid>
-
           {/* Secondary colors */}
           <Grid
             item
@@ -257,7 +293,6 @@ const ThemeShowcase = () => {
               </Typography>
             </Box>
           </Grid>
-
           {/* Accent and text colors */}
           <Grid
             item
@@ -314,7 +349,6 @@ const ThemeShowcase = () => {
           Buttons
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={2}>
@@ -367,7 +401,6 @@ const ThemeShowcase = () => {
               <Button variant='accent'>Accent</Button>
             </Box>
           </Grid>
-
           {/* Outlined buttons */}
           <Grid
             item
@@ -416,7 +449,6 @@ const ThemeShowcase = () => {
               </Button>
             </Box>
           </Grid>
-
           {/* Text buttons */}
           <Grid
             item
@@ -465,7 +497,6 @@ const ThemeShowcase = () => {
               </Button>
             </Box>
           </Grid>
-
           {/* Button sizes */}
           <Grid
             item
@@ -508,7 +539,6 @@ const ThemeShowcase = () => {
           Form Elements
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={3}>
@@ -572,7 +602,6 @@ const ThemeShowcase = () => {
               />
             </Box>
           </Grid>
-
           {/* Selection Controls */}
           <Grid
             item
@@ -599,7 +628,6 @@ const ThemeShowcase = () => {
                 />
               </Box>
             </Box>
-
             <Box sx={{ mb: 2 }}>
               <Typography
                 variant='subtitle2'
@@ -616,7 +644,6 @@ const ThemeShowcase = () => {
                 />
               </Box>
             </Box>
-
             <Box sx={{ mb: 2 }}>
               <Typography
                 variant='subtitle2'
@@ -633,7 +660,6 @@ const ThemeShowcase = () => {
                 />
               </Box>
             </Box>
-
             <Box sx={{ mb: 2 }}>
               <Typography
                 variant='subtitle2'
@@ -664,7 +690,6 @@ const ThemeShowcase = () => {
           Cards
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={3}>
@@ -694,7 +719,6 @@ const ThemeShowcase = () => {
               </CardActions>
             </Card>
           </Grid>
-
           {/* Card with Actions */}
           <Grid
             item
@@ -730,7 +754,6 @@ const ThemeShowcase = () => {
               </CardActions>
             </Card>
           </Grid>
-
           {/* Outlined Card */}
           <Grid
             item
@@ -772,7 +795,6 @@ const ThemeShowcase = () => {
           Feedback Components
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={3}>
@@ -810,7 +832,6 @@ const ThemeShowcase = () => {
               This is a success alert — <strong>check it out!</strong>
             </Alert>
           </Grid>
-
           {/* Progress */}
           <Grid
             item
@@ -834,7 +855,6 @@ const ThemeShowcase = () => {
                 <CircularProgress color='error' />
               </Box>
             </Box>
-
             <Box sx={{ mb: 2 }}>
               <Typography
                 variant='subtitle2'
@@ -858,7 +878,6 @@ const ThemeShowcase = () => {
               </Box>
             </Box>
           </Grid>
-
           {/* Chips */}
           <Grid
             item
@@ -920,7 +939,6 @@ const ThemeShowcase = () => {
           Navigation Components
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         {/* Tabs */}
         <Typography
           variant='h6'
@@ -954,7 +972,6 @@ const ThemeShowcase = () => {
             </Typography>
           )}
         </Box>
-
         {/* Lists */}
         <Typography
           variant='h6'
@@ -984,7 +1001,6 @@ const ThemeShowcase = () => {
               </ListItem>
             </List>
           </Grid>
-
           <Grid
             item
             xs={12}
@@ -1018,7 +1034,6 @@ const ThemeShowcase = () => {
             </List>
           </Grid>
         </Grid>
-
         {/* Accordions */}
         <Typography
           variant='h6'
@@ -1075,7 +1090,6 @@ const ThemeShowcase = () => {
           Status Icons
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Grid
           container
           spacing={2}>
@@ -1162,7 +1176,6 @@ const ThemeShowcase = () => {
           Theme Information
         </Typography>
         <Divider sx={{ mb: 3 }} />
-
         <Typography
           variant='body1'
           paragraph>
@@ -1170,7 +1183,6 @@ const ThemeShowcase = () => {
           feel across the application. It's based on Material-UI's theming
           system with custom colors, typography, and component styles.
         </Typography>
-
         <Typography
           variant='body1'
           paragraph>
@@ -1194,7 +1206,6 @@ const ThemeShowcase = () => {
           </Box>
           .
         </Typography>
-
         <Typography variant='body1'>
           The font family used throughout the application is:{' '}
           <Box
@@ -1203,9 +1214,37 @@ const ThemeShowcase = () => {
             {theme.typography.fontFamily}
           </Box>
         </Typography>
+
+        {/* Theme Mode Information */}
+        <Box
+          sx={{ mt: 3, p: 2, bgcolor: 'background.default', borderRadius: 1 }}>
+          <Typography
+            variant='h6'
+            gutterBottom>
+            Current Theme Mode Settings
+          </Typography>
+          <Typography variant='body2'>
+            Mode: <strong>{mode}</strong>
+          </Typography>
+          <Typography variant='body2'>
+            Background Default:{' '}
+            <strong>{theme.palette.background.default}</strong>
+          </Typography>
+          <Typography variant='body2'>
+            Background Paper: <strong>{theme.palette.background.paper}</strong>
+          </Typography>
+          <Typography variant='body2'>
+            Text Primary: <strong>{theme.palette.text.primary}</strong>
+          </Typography>
+          <Typography variant='body2'>
+            Text Secondary: <strong>{theme.palette.text.secondary}</strong>
+          </Typography>
+        </Box>
       </Paper>
     </Box>
   );
 };
 
 export default ThemeShowcase;
+
+
