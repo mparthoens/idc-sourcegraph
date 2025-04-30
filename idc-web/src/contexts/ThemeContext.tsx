@@ -1,3 +1,4 @@
+// src/contexts/ThemeContext.tsx
 import React, {
   createContext,
   useState,
@@ -5,11 +6,9 @@ import React, {
   useMemo,
   useContext,
 } from 'react';
-import {
-  ThemeProvider as MuiThemeProvider,
-  createTheme,
-} from '@mui/material/styles';
+import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import { PaletteMode } from '@mui/material';
+import { createAppTheme } from '../theme/theme'; // Import your custom theme
 
 // Define the context type
 type ThemeContextType = {
@@ -51,16 +50,8 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
-  // Create the theme based on current mode
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
-        },
-      }),
-    [mode]
-  );
+  // Create the theme based on current mode using your custom theme function
+  const theme = useMemo(() => createAppTheme(mode), [mode]);
 
   // Create the context value
   const contextValue = useMemo(

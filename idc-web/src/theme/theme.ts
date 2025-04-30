@@ -1,299 +1,270 @@
 // src/theme/theme.ts
-import { createTheme, responsiveFontSizes } from '@mui/material/styles';
+import { createTheme, responsiveFontSizes, Theme } from '@mui/material/styles';
+import { PaletteMode } from '@mui/material';
 
-/**
- * Color palette inspired by Nike.com
- * These colors will be used throughout the application
- */
-const colors = {
-	primary: {
-		main: '#111111', // Nike's primary black
-		light: '#333333',
-		dark: '#000000',
-		contrastText: '#ffffff',
-	},
-	secondary: {
-		main: '#f5f5f5', // Light gray
-		light: '#ffffff',
-		dark: '#e0e0e0',
-		contrastText: '#111111',
-	},
-	accent: {
-		main: '#fa5400', // Nike's orange accent
-		light: '#ff7d33',
-		dark: '#c43c00',
-		contrastText: '#ffffff',
-	},
-	success: {
-		main: '#4caf50',
-		light: '#80e27e',
-		dark: '#087f23',
-		contrastText: '#ffffff',
-	},
-	warning: {
-		main: '#ff9800',
-		light: '#ffc947',
-		dark: '#c66900',
-		contrastText: '#000000',
-	},
-	error: {
-		main: '#f44336',
-		light: '#ff7961',
-		dark: '#ba000d',
-		contrastText: '#ffffff',
-	},
-	info: {
-		main: '#2196f3',
-		light: '#6ec6ff',
-		dark: '#0069c0',
-		contrastText: '#ffffff',
-	},
-	background: {
-		default: '#ffffff',
-		paper: '#f5f5f5',
-	},
-	text: {
-		primary: '#111111',
-		secondary: '#757575',
-		disabled: '#9e9e9e',
-	},
-};
-
-/**
- * Create the base theme with customizations
- * This includes typography, colors, component styles, etc.
- */
-let theme = createTheme({
-	palette: {
-		primary: colors.primary,
-		secondary: colors.secondary,
-		error: colors.error,
-		warning: colors.warning,
-		info: colors.info,
-		success: colors.success,
-		background: colors.background,
-		text: colors.text,
-	},
-	typography: {
-		fontFamily: [
-			'Helvetica Neue',
-			'Arial',
-			'sans-serif',
-		].join(','),
-		h1: {
-			fontSize: '3.5rem',
-			fontWeight: 700,
-			letterSpacing: '-0.01562em',
-		},
-		h2: {
-			fontSize: '2.75rem',
-			fontWeight: 700,
-			letterSpacing: '-0.00833em',
-		},
-		h3: {
-			fontSize: '2.25rem',
-			fontWeight: 600,
-			letterSpacing: '0em',
-		},
-		h4: {
-			fontSize: '1.75rem',
-			fontWeight: 600,
-			letterSpacing: '0.00735em',
-		},
-		h5: {
-			fontSize: '1.5rem',
-			fontWeight: 500,
-			letterSpacing: '0em',
-		},
-		h6: {
-			fontSize: '1.25rem',
-			fontWeight: 500,
-			letterSpacing: '0.0075em',
-		},
-		subtitle1: {
-			fontSize: '1rem',
-			fontWeight: 400,
-			letterSpacing: '0.00938em',
-		},
-		subtitle2: {
-			fontSize: '0.875rem',
-			fontWeight: 500,
-			letterSpacing: '0.00714em',
-		},
-		body1: {
-			fontSize: '1rem',
-			fontWeight: 400,
-			letterSpacing: '0.00938em',
-		},
-		body2: {
-			fontSize: '0.875rem',
-			fontWeight: 400,
-			letterSpacing: '0.01071em',
-		},
-		button: {
-			fontSize: '0.875rem',
-			fontWeight: 500,
-			letterSpacing: '0.02857em',
-			textTransform: 'none',
-		},
-		caption: {
-			fontSize: '0.75rem',
-			fontWeight: 400,
-			letterSpacing: '0.03333em',
-		},
-		overline: {
-			fontSize: '0.625rem',
-			fontWeight: 400,
-			letterSpacing: '0.08333em',
-			textTransform: 'uppercase',
-		},
-	},
-	shape: {
-		borderRadius: 8,
-	},
-	components: {
-		// Button customizations
-		MuiButton: {
-			styleOverrides: {
-				root: {
-					borderRadius: 20,
-					padding: '8px 24px',
-					fontWeight: 500,
-				},
-				contained: {
-					boxShadow: 'none',
-					'&:hover': {
-						boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.2)',
-					},
-				},
-				outlined: {
-					borderWidth: 2,
-					'&:hover': {
-						borderWidth: 2,
-					},
-				},
-			},
-			// Add a custom 'accent' variant
-			variants: [
-				{
-					props: { variant: 'accent' },
-					style: {
-						backgroundColor: colors.accent.main,
-						color: colors.accent.contrastText,
-						'&:hover': {
-							backgroundColor: colors.accent.dark,
-						},
-					},
-				},
-			],
-		},
-		// Card customizations
-		MuiCard: {
-			styleOverrides: {
-				root: {
-					borderRadius: 12,
-					boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.05)',
-				},
-			},
-		},
-		// AppBar customizations
-		MuiAppBar: {
-			styleOverrides: {
-				root: {
-					boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.05)',
-				},
-			},
-		},
-		// Drawer customizations
-		MuiDrawer: {
-			styleOverrides: {
-				paper: {
-					backgroundColor: colors.primary.main,
-					color: colors.primary.contrastText,
-				},
-			},
-		},
-		// ListItemButton customizations for the sidebar
-		MuiListItemButton: {
-			styleOverrides: {
-				root: {
-					'&.Mui-selected': {
-						backgroundColor: 'rgba(255, 255, 255, 0.1)',
-						'&:hover': {
-							backgroundColor: 'rgba(255, 255, 255, 0.2)',
-						},
-					},
-					'&:hover': {
-						backgroundColor: 'rgba(255, 255, 255, 0.05)',
-					},
-				},
-			},
-		},
-		// ListItemIcon customizations for the sidebar
-		MuiListItemIcon: {
-			styleOverrides: {
-				root: {
-					color: colors.primary.contrastText,
-				},
-			},
-		},
-		// ListItemText customizations for the sidebar
-		MuiListItemText: {
-			styleOverrides: {
-				primary: {
-					color: colors.primary.contrastText,
-				},
-			},
-		},
-		// TextField customizations
-		MuiTextField: {
-			styleOverrides: {
-				root: {
-					'& .MuiOutlinedInput-root': {
-						borderRadius: 8,
-					},
-				},
-			},
-		},
-		// Chip customizations
-		MuiChip: {
-			styleOverrides: {
-				root: {
-					borderRadius: 16,
-				},
-			},
-		},
-	},
-});
-
-// Apply responsive font sizes to make typography responsive
-theme = responsiveFontSizes(theme);
-
-/**
- * Type declarations for custom theme properties
- * This allows TypeScript to recognize our custom theme additions
- */
+// Declare module augmentation for custom palette colors
 declare module '@mui/material/styles' {
 	interface Palette {
-		accent: Palette['primary'];
+		accent?: Palette['primary'];
 	}
 	interface PaletteOptions {
 		accent?: PaletteOptions['primary'];
 	}
-
-	interface TypographyVariants {
-		poster: React.CSSProperties;
-	}
-	interface TypographyVariantsOptions {
-		poster?: React.CSSProperties;
-	}
 }
 
-// Update the Button's props to include 'accent' variant
+// Declare module augmentation for custom button variant
 declare module '@mui/material/Button' {
 	interface ButtonPropsVariantOverrides {
 		accent: true;
 	}
 }
 
-export default theme;
+/**
+ * Creates a theme based on the specified mode (light or dark)
+ * Inspired by Nike.com's design aesthetic
+ * 
+ * @param {PaletteMode} mode - The color mode ('light' or 'dark')
+ * @returns {Theme} The configured Material-UI theme
+ */
+export const createAppTheme = (mode: PaletteMode): Theme => {
+	// Create the base theme
+	let theme = createTheme({
+		palette: {
+			mode,
+			primary: {
+				// Nike black
+				main: '#111',
+				light: '#333',
+				dark: '#000',
+				contrastText: '#fff',
+			},
+			secondary: {
+				// Nike red/orange
+				main: '#fa5400',
+				light: '#ff7a33',
+				dark: '#c43e00',
+				contrastText: '#fff',
+			},
+			accent: {
+				// Nike accent color (sometimes used for CTAs)
+				main: '#fa5400',
+				light: '#ff7a33',
+				dark: '#c43e00',
+				contrastText: '#fff',
+			},
+			background: {
+				default: mode === 'light' ? '#f5f5f5' : '#121212',
+				paper: mode === 'light' ? '#fff' : '#1e1e1e',
+			},
+			text: {
+				primary: mode === 'light' ? '#111' : '#fff',
+				secondary: mode === 'light' ? '#757575' : '#b0b0b0',
+			},
+			error: {
+				main: '#d32f2f',
+			},
+			warning: {
+				main: '#ed6c02',
+			},
+			info: {
+				main: '#0288d1',
+			},
+			success: {
+				main: '#2e7d32',
+			},
+		},
+		typography: {
+			fontFamily: [
+				'Helvetica Neue',
+				'Arial',
+				'sans-serif',
+				'-apple-system',
+				'BlinkMacSystemFont',
+				'"Segoe UI"',
+				'Roboto',
+			].join(','),
+			h1: {
+				fontWeight: 700,
+				fontSize: '3.5rem',
+				letterSpacing: '-0.01562em',
+			},
+			h2: {
+				fontWeight: 700,
+				fontSize: '2.75rem',
+				letterSpacing: '-0.00833em',
+			},
+			h3: {
+				fontWeight: 600,
+				fontSize: '2.25rem',
+				letterSpacing: '0em',
+			},
+			h4: {
+				fontWeight: 600,
+				fontSize: '1.75rem',
+				letterSpacing: '0.00735em',
+			},
+			h5: {
+				fontWeight: 600,
+				fontSize: '1.5rem',
+				letterSpacing: '0em',
+			},
+			h6: {
+				fontWeight: 600,
+				fontSize: '1.25rem',
+				letterSpacing: '0.0075em',
+			},
+			subtitle1: {
+				fontWeight: 500,
+				fontSize: '1rem',
+				letterSpacing: '0.00938em',
+			},
+			subtitle2: {
+				fontWeight: 500,
+				fontSize: '0.875rem',
+				letterSpacing: '0.00714em',
+			},
+			body1: {
+				fontWeight: 400,
+				fontSize: '1rem',
+				letterSpacing: '0.00938em',
+			},
+			body2: {
+				fontWeight: 400,
+				fontSize: '0.875rem',
+				letterSpacing: '0.01071em',
+			},
+			button: {
+				fontWeight: 600,
+				fontSize: '0.875rem',
+				letterSpacing: '0.02857em',
+				textTransform: 'none',
+			},
+		},
+		shape: {
+			borderRadius: 4,
+		},
+		components: {
+			MuiButton: {
+				variants: [
+					{
+						props: { variant: 'accent' },
+						style: {
+							color: '#fff',
+							backgroundColor: '#fa5400',
+							'&:hover': {
+								backgroundColor: '#ff7a33',
+							},
+						},
+					},
+				],
+				styleOverrides: {
+					root: {
+						borderRadius: 30,
+						padding: '8px 24px',
+						transition: 'all 0.2s ease-in-out',
+						textTransform: 'none',
+						fontWeight: 600,
+					},
+					contained: {
+						boxShadow: 'none',
+						'&:hover': {
+							boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)',
+						},
+					},
+					outlined: {
+						borderWidth: 2,
+						'&:hover': {
+							borderWidth: 2,
+						},
+					},
+				},
+			},
+			MuiCard: {
+				styleOverrides: {
+					root: {
+						boxShadow: mode === 'light'
+							? '0px 2px 8px rgba(0, 0, 0, 0.05)'
+							: '0px 2px 8px rgba(0, 0, 0, 0.2)',
+						borderRadius: 8,
+						transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+						'&:hover': {
+							transform: 'translateY(-4px)',
+							boxShadow: mode === 'light'
+								? '0px 4px 12px rgba(0, 0, 0, 0.1)'
+								: '0px 4px 12px rgba(0, 0, 0, 0.3)',
+						},
+					},
+				},
+			},
+			MuiAppBar: {
+				styleOverrides: {
+					root: {
+						boxShadow: 'none',
+						borderBottom: mode === 'light'
+							? '1px solid #e0e0e0'
+							: '1px solid #333',
+					},
+				},
+			},
+			MuiDrawer: {
+				styleOverrides: {
+					paper: {
+						borderRight: 'none',
+						boxShadow: mode === 'light'
+							? '2px 0px 8px rgba(0, 0, 0, 0.05)'
+							: '2px 0px 8px rgba(0, 0, 0, 0.2)',
+					},
+				},
+			},
+			MuiTextField: {
+				styleOverrides: {
+					root: {
+						'& .MuiOutlinedInput-root': {
+							borderRadius: 8,
+							'& fieldset': {
+								borderWidth: 1,
+								borderColor: mode === 'light' ? '#e0e0e0' : '#444',
+							},
+							'&:hover fieldset': {
+								borderColor: mode === 'light' ? '#bdbdbd' : '#666',
+							},
+							'&.Mui-focused fieldset': {
+								borderWidth: 2,
+							},
+						},
+					},
+				},
+			},
+			MuiChip: {
+				styleOverrides: {
+					root: {
+						borderRadius: 16,
+						fontWeight: 500,
+					},
+				},
+			},
+			MuiTab: {
+				styleOverrides: {
+					root: {
+						textTransform: 'none',
+						fontWeight: 600,
+						minWidth: 100,
+					},
+				},
+			},
+			MuiTableCell: {
+				styleOverrides: {
+					head: {
+						fontWeight: 600,
+						backgroundColor: mode === 'light' ? '#f5f5f5' : '#333',
+					},
+				},
+			},
+		},
+	});
+
+	// Make typography responsive
+	theme = responsiveFontSizes(theme);
+
+	return theme;
+};

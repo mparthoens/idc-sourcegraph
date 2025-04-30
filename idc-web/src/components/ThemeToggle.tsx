@@ -1,6 +1,7 @@
+// src/ThemeToggle.tsx
 import { IconButton, Tooltip } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4'; // Dark mode icon
-import Brightness7Icon from '@mui/icons-material/Brightness7'; // Light mode icon
+import DarkModeIcon from '@mui/icons-material/DarkMode'; // Better dark mode icon
+import LightModeIcon from '@mui/icons-material/LightMode'; // Better light mode icon
 import { useThemeContext } from '../contexts/ThemeContext';
 import { useTranslation } from 'react-i18next';
 
@@ -29,7 +30,7 @@ const ThemeToggle = () => {
             ? t('theme.switchToDark', 'Switch to dark theme')
             : t('theme.switchToLight', 'Switch to light theme')
         }>
-        {mode === 'light' ? <Brightness4Icon /> : <Brightness7Icon />}
+        {mode === 'light' ? <DarkModeIcon /> : <LightModeIcon />}
       </IconButton>
     </Tooltip>
   );

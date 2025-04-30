@@ -43,6 +43,7 @@ const Topbar = ({
   return (
     <AppBar
       position='fixed'
+      color='primary' // Explicitly set to use primary color
       sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
       <Toolbar>
         {/* Mobile menu toggle button - only visible on mobile */}
