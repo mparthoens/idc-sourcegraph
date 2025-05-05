@@ -3,8 +3,7 @@
 	"navigation": {
 		"home": "Home",
 		"contact": "Contact",
-		"gdpr": "GDPR",
-		"themeShowcase": "Theme Showcase"
+		"gdpr": "GDPR"
 	},
 	"language": {
 		"en": "English",
