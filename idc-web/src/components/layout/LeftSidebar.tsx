@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next';
 import HomeIcon from '@mui/icons-material/Home';
 import ContactMailIcon from '@mui/icons-material/ContactMail';
 import SecurityIcon from '@mui/icons-material/Security';
+import EuropetnetBadge from './EuropetnetBadge';
 
 /**
  * Props interface for the LeftSidebar component
@@ -52,7 +53,7 @@ const LeftSidebar = ({
   
   // Width of the sidebar when open
   const drawerWidth = 240;
-  
+
   // Navigation menu items with icons and translation keys
   const menuItems = [
     { text: t('navigation.home'), icon: <HomeIcon />, path: '/' },
@@ -82,6 +83,9 @@ const LeftSidebar = ({
       {/* Toolbar spacer to push content below the app bar */}
       <Toolbar />
       
+      {/* Europetnet Badge */}
+      <EuropetnetBadge />
+      
       {/* Navigation menu list */}
       <List sx={{ px: 1 }}>
         {menuItems.map((item) => {
@@ -93,7 +97,7 @@ const LeftSidebar = ({
               disablePadding
               sx={{ mb: 0.5 }}
             >
-              <ListItemButton 
+              <ListItemButton
                 onClick={() => handleNavigation(item.path)}
                 selected={isSelected}
                 sx={{
@@ -110,16 +114,16 @@ const LeftSidebar = ({
                   },
                 }}
               >
-                <ListItemIcon 
-                  sx={{ 
+                <ListItemIcon
+                  sx={{
                     color: isSelected ? theme.palette.primary.main : theme.palette.text.secondary,
                     minWidth: 40,
                   }}
                 >
                   {item.icon}
                 </ListItemIcon>
-                <ListItemText 
-                  primary={item.text} 
+                <ListItemText
+                  primary={item.text}
                   primaryTypographyProps={{
                     fontWeight: isSelected ? 500 : 400,
                     color: isSelected ? theme.palette.primary.main : theme.palette.text.primary,
@@ -145,8 +149,8 @@ const LeftSidebar = ({
         }}
         sx={{
           display: { xs: 'block', md: 'none' },
-          '& .MuiDrawer-paper': { 
-            width: drawerWidth, 
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
             boxSizing: 'border-box',
             backgroundColor: alpha(theme.palette.background.default, 0.9),
             backdropFilter: 'blur(10px)',

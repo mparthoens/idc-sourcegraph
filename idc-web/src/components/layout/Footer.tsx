@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
             letterSpacing: '0.01em',
           }}
         >
-          {`© ${currentYear} IDC Web App. All rights reserved.`}
+          {`© ${currentYear} - CSW Engineering - All rights reserved.`}
         </Typography>
       </Container>
     </Box>
