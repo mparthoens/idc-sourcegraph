@@ -18,7 +18,7 @@ const EuropetnetBadge = () => {
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
-        padding: '16px',
+        padding: '8px 16px',
       }}
     >
       <div id="epnbadgeiframewrapper" style={{ height: 'auto' }}>
@@ -28,11 +28,10 @@ const EuropetnetBadge = () => {
           style={{
             border: 'none',
             width: '205px',
-            height: '35px'
+            height: '35px',
+            overflow: 'hidden' // Replaces scrolling="no"
           }}
           title="Europetnet Badge"
-          frameBorder="0"
-          scrolling="no"
         />
       </div>
     </Box>

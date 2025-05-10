@@ -83,8 +83,8 @@ const LeftSidebar = ({
       {/* Toolbar spacer to push content below the app bar */}
       <Toolbar />
       
-      {/* Europetnet Badge */}
-      <EuropetnetBadge />
+      {/* Add space above the first menu item - adjust the height value as needed */}
+      <Box sx={{ height: 16 }} />
       
       {/* Navigation menu list */}
       <List sx={{ px: 1 }}>
@@ -133,6 +133,14 @@ const LeftSidebar = ({
             </ListItem>
           );
         })}
+        
+        {/* Add some space between the last menu item and the badge */}
+        <Box sx={{ height: 16 }} />
+        
+        {/* Europetnet Badge right after the menu items */}
+        <ListItem disablePadding>
+          <EuropetnetBadge />
+        </ListItem>
       </List>
     </>
   );
