@@ -4,6 +4,7 @@ import MainLayout from './components/layout/MainLayout';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import GDPR from './pages/GDPR';
+import ThemeShowcase from './pages/ThemeShowcase';
 import { ThemeProvider } from './contexts/ThemeContext';
 
 // Import i18n configuration to enable translations
@@ -44,6 +45,10 @@ function App() {
               element={<GDPR />}
             />
             {/* Theme showcase page */}
+                        <Route
+              path='theme-showcase'
+              element={<ThemeShowcase />}
+            />
 
           </Route>
         </Routes>

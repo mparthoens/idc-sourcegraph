@@ -1,5 +1,16 @@
 # ID Chips Project Specification
 
+IMPORTANT: Always apply the following guidelines when generating code:
+- Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
+- Generate full file path clearly indicated before the code block.
+- Pause between each file code generation. Wait for instruction to continue.
+- Give me a few lines of overlaps when you generate code.
+- Comments must be added to code
+- Using Vite
+- Using React 18
+- Using TypeScript
+- Using Material UI
+- Using I18n
 
 ## 1. Project Overview
 
@@ -254,30 +265,7 @@ All developments must be available in 4 languages:
 
 ### 9.6 (IN PROGRESS)
 - Develop a ThemeShowcase page to showcase them including a maximum of control (buttons, inputs, carousels with companion animals images, etc).
+- Hardcode text. Do not use i18n for this page
 - Update the theme to the new design
 
-## 10. Timeline and Milestones
-- Week 1-2: Design phase and project setup
-- Week 3-6: Core functionality implementation
-- Week 7-8: Integration with API endpoints
-- Week 9-10: Testing and bug fixing
-- Week 11-12: Final polishing and deployment
 
-## 11. Future Enhancements (Post-Initial Release)
-- Mobile application development
-- Advanced reporting and analytics
-- Integration with additional third-party services
-- Offline functionality
-- Multi-language support
-- Enhanced user notification system
-
-## Appendix A: Always keep this in mind: development Guidelines mandatory for all file generation
-- Generate full file path clearly indicated before the code block.
-- Pause between each file code generation. Wait for instruction to continue.
-- Give me a few lines of overlaps when you generate code.
-- Comments must be added to code
-- Using Vite
-- Using React 18
-- Using TypeScript
-- Using Material UI
-- Using I18n
