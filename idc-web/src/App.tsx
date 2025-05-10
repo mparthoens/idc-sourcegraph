@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import MainLayout from './components/layout/MainLayout';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import Contact from './pages/Contact';
 import GDPR from './pages/GDPR';
 import ThemeShowcase from './pages/ThemeShowcase';
