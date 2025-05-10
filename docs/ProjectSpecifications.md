@@ -2,7 +2,7 @@
 
 IMPORTANT: Always apply the following guidelines when generating code:
 - Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
-- Generate full file path clearly indicated before the code block.
+- Before each code block generation, display full file path of the file for wich code is generated
 - Pause between each file code generation. Wait for instruction to continue.
 - Give me a few lines of overlaps when you generate code.
 - Comments must be added to code
@@ -263,9 +263,17 @@ All developments must be available in 4 languages:
 - Implementing Apple-like theme
 - Applying theme to all pages
 
-### 9.6 (IN PROGRESS)
+### 9.6 (COMPLETED)
 - Develop a ThemeShowcase page to showcase them including a maximum of control (buttons, inputs, carousels with companion animals images, etc).
 - Hardcode text. Do not use i18n for this page
 - Update the theme to the new design
 
+### 9.7 (IN PROGRESS)
+- Focusing on idc-web
+- Work on Home page.
+- Use i18n for the text only English for now
+- On the home page we need,
+  - a text: Companion Animal Microchip Registration & Database.Protect Your Animal Today
+  - a carousel with companion animals images with automatic scrolling (no button) cat, dog, horse, eagle, parrot, pig, fish, turtle
+  
 
