@@ -75,7 +75,7 @@ const Home: React.FC = () => {
       <ContentWrapper isStacked={isStacked}>
         <HeroContent>
           <HeroTitle>
-            Companion Animal <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
+            Companion Animals <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
           </HeroTitle>
           <HeroSubtitle>
             Protect your <span className="emphasis">beloved companion</span> with our <span className="emphasis">secure, reliable</span> microchip registration system. <span className="emphasis">Reunite faster</span> if they ever go missing.
