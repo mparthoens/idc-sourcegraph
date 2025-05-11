@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
   HeroContent,
@@ -19,23 +19,23 @@ import {
 const animalImages = [
   {
     url: 'https://images.unsplash.com/photo-1583511655826-05700442b31b',
-    alt: 'Dog'
+    alt: 'Close-up of a dog\'s face'
   },
   {
     url: 'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7',
-    alt: 'Cat'
+    alt: 'Close-up of a cat\'s face'
   },
   {
     url: 'https://images.unsplash.com/photo-1598974357809-112c788eba71',
-    alt: 'Horse'
+    alt: 'Close-up of a horse\'s head'
   },
   {
     url: 'https://images.unsplash.com/photo-1611689037241-d8dfe4280f2e',
-    alt: 'Eagle'
+    alt: 'Close-up of an eagle\'s head'
   },
   {
     url: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3',
-    alt: 'Parrot'
+    alt: 'Close-up of a parrot\'s head'
   }
 ];
 
@@ -75,15 +75,11 @@ const Home: React.FC = () => {
       <ContentWrapper isStacked={isStacked}>
         <HeroContent>
           <HeroTitle>
-          <span className="highlight">Companion Animals</span> Microchip Registration & Database.
+            Companion Animal <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
           </HeroTitle>
           <HeroSubtitle>
-            Protect your beloved companion with our secure, reliable microchip registration system. Reunite faster if they ever go missing.
+            Protect your <span className="emphasis">beloved companion</span> with our <span className="emphasis">secure, reliable</span> microchip registration system. <span className="emphasis">Reunite faster</span> if they ever go missing.
           </HeroSubtitle>
-                    <HeroSubtitle>
-           <span className="highlight"> Check with your Vet.</span>
-          </HeroSubtitle>
-
         </HeroContent>
 
         <CarouselContainer>

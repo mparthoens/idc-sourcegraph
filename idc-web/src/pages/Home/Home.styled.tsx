@@ -127,6 +127,24 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
   marginBottom: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
   lineHeight: 1.4, // Added for better readability
   
+  '& .emphasis': {
+    fontWeight: 600,
+    color: theme.palette.text.primary,
+    position: 'relative',
+    display: 'inline-block',
+    
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      width: '100%',
+      height: '2px',
+      background: `linear-gradient(90deg, transparent, ${theme.palette.primary.main} 50%, transparent)`,
+      opacity: 0.5,
+    }
+  },
+  
   [theme.breakpoints.down('sm')]: {
     marginBottom: theme.spacing(2),
   },
