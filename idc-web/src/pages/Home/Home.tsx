@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
   HeroContent,
@@ -18,23 +18,23 @@ import {
  */
 const animalImages = [
   {
-    url: 'https://images.unsplash.com/photo-1543466835-00a7907e9de1',
+    url: 'https://images.unsplash.com/photo-1583511655826-05700442b31b',
     alt: 'Dog'
   },
   {
-    url: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba',
+    url: 'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7',
     alt: 'Cat'
   },
   {
-    url: 'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a',
+    url: 'https://images.unsplash.com/photo-1598974357809-112c788eba71',
     alt: 'Horse'
   },
   {
-    url: 'https://images.unsplash.com/photo-1611689342806-0863700ce1e4',
+    url: 'https://images.unsplash.com/photo-1611689037241-d8dfe4280f2e',
     alt: 'Eagle'
   },
   {
-    url: 'https://images.unsplash.com/photo-1522926193341-e9ffd686c60f',
+    url: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3',
     alt: 'Parrot'
   }
 ];

@@ -137,11 +137,11 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
  */
 export const CarouselContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
-  width: '45%', // Reduced from 55% to 45%
+  width: '45%', // Keep your existing width
   // Use aspect-ratio property for modern browsers
-  aspectRatio: '4/3',
+  aspectRatio: '1/1', // Changed to 1:1 (square) for better head shots
   overflow: 'hidden',
-  borderRadius: theme.shape.borderRadius * 2, // Increased border radius
+  borderRadius: theme.shape.borderRadius * 2, // Keep your existing border radius
   boxShadow: theme.palette.mode === 'dark' 
     ? '0 10px 30px rgba(0,0,0,0.3)' 
     : '0 10px 30px rgba(0,0,0,0.15)',
@@ -150,30 +150,30 @@ export const CarouselContainer = styled(Box)(({ theme }) => ({
   '&::before': {
     content: '""',
     display: 'block',
-    paddingTop: '75%', // 4:3 aspect ratio (3/4 = 0.75 = 75%)
+    paddingTop: '100%', // 1:1 aspect ratio (square)
   },
   
   [theme.breakpoints.down('lg')]: {
     width: '100%',
-    maxWidth: '600px', // Reduced from 700px to 600px
+    maxWidth: '550px', // Adjusted for square format
     marginTop: theme.spacing(2),
   },
   
   [theme.breakpoints.down('md')]: {
-    maxWidth: '500px', // Reduced from 600px to 500px
+    maxWidth: '450px', // Adjusted for square format
   },
   
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '85%', // Reduced from 90% to 85%
-    aspectRatio: '3/2', // Slightly different aspect ratio for small screens
+    maxWidth: '85%', // Keep your existing value
+    aspectRatio: '1/1', // Keep square aspect ratio
     
     '&::before': {
-      paddingTop: '66.67%', // 3:2 aspect ratio (2/3 = 0.6667 = 66.67%)
+      paddingTop: '100%', // 1:1 aspect ratio (square)
     },
   },
   
   // Remove fixed heights and let aspect ratio control the height
-  '@supports (aspect-ratio: 4/3)': {
+  '@supports (aspect-ratio: 1/1)': {
     '&::before': {
       display: 'none',
     },
@@ -199,6 +199,7 @@ export const CarouselImage = styled('img')(({ theme }) => ({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
+  objectPosition: 'center', // Ensure the face is centered
   filter: theme.palette.mode === 'dark' ? 'brightness(0.85)' : 'none',
 }));
 

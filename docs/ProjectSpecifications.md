@@ -268,12 +268,18 @@ All developments must be available in 4 languages:
 - Hardcode text. Do not use i18n for this page
 - Update the theme to the new design
 
-### 9.7 (IN PROGRESS)
+### 9.7 (COMLETED)
 - Focusing on idc-web
 - Work on Home page.
 - Use i18n for the text only English for now
 - On the home page we need,
   - a text: Companion Animal Microchip Registration & Database.Protect Your Animal Today
   - a carousel with companion animals images with automatic scrolling (no button) cat, dog, horse, eagle, parrot, pig, fish, turtle
+
+### 9.8 (IN PROGRESS)
+- Focusing on idc-web
+- Work on Home page.
+- Use my own images for the carousel
+
   
 
