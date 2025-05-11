@@ -5,36 +5,22 @@ interface ContentWrapperProps {
   isStacked?: boolean;
 }
 
-interface PageContainerProps {
-  isMobile?: boolean;
-  topBarHeight: number;
-  sidebarWidth: number;
-}
-
 /**
- * Main page container with proper spacing
+ * Container for the page content
+ * Uses absolute positioning to break out of the parent's padding
  */
-export const PageContainer = styled(Box, {
-  shouldForwardProp: (prop) => !['isMobile', 'topBarHeight', 'sidebarWidth'].includes(prop as string)
-})<PageContainerProps>(({ theme, isMobile, topBarHeight, sidebarWidth }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  width: '100%',
-  minHeight: '100vh',
-  zIndex: 0,
-  bgcolor: 'background.default',
-  overflow: 'auto',
-  // Add left margin on non-mobile screens to account for sidebar
-  ...(isMobile ? {} : { 
-    marginLeft: `${sidebarWidth}px`, 
-    width: `calc(100% - ${sidebarWidth}px)` 
-  }),
-  // Add padding top to account for the top bar - reduced for large screens
-  paddingTop: `${topBarHeight + 16}px`, // Reduced from 32px to 16px
-  paddingBottom: theme.spacing(4), // Reduced from 6 to 4
+export const PageContainer = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  left: -24, // Negative of the parent's padding (p: 3 = 24px)
+  width: 'calc(100% + 48px)', // 100% + left padding + right padding
   display: 'flex',
   flexDirection: 'column',
+  
+  // Adjust for different screen sizes
+  [theme.breakpoints.down('sm')]: {
+    left: -16, // Smaller padding on mobile
+    width: 'calc(100% + 32px)',
+  },
 }));
 
 /**
@@ -47,32 +33,30 @@ export const ContentWrapper = styled(Box, {
   maxWidth: '1200px',
   width: '100%',
   margin: '0 auto',
-  padding: theme.spacing(2, 2),
+  padding: theme.spacing(3, 3),
   gap: theme.spacing(5),
   flex: 1,
-  // Align content to the top on large screens or center if stacked
   alignItems: isStacked ? 'center' : 'flex-start',
-  marginTop: theme.spacing(2), // Add a small top margin
   
   // Handle stacked layout (tablet and below)
   ...(isStacked && {
     flexDirection: 'column',
-    gap: theme.spacing(4),
+    gap: theme.spacing(3),
   }),
   
   [theme.breakpoints.down('lg')]: {
     maxWidth: '960px',
-    gap: theme.spacing(4),
-  },
-  
-  [theme.breakpoints.down('md')]: {
-    padding: theme.spacing(2, 2),
     gap: theme.spacing(3),
   },
   
-  [theme.breakpoints.down('sm')]: {
-    padding: theme.spacing(1.5, 1.5),
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(3, 3),
     gap: theme.spacing(2),
+  },
+  
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(2, 2),
+    gap: theme.spacing(1.5),
   },
 }));
 
@@ -80,18 +64,26 @@ export const ContentWrapper = styled(Box, {
  * Container for the hero content (title and subtitle)
  */
 export const HeroContent = styled(Box)(({ theme }) => ({
-  width: '50%', // Increased from 45% to 50%
+  width: '50%',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'flex-start', // Align to top instead of center
-  paddingTop: theme.spacing(3), // Add padding to align with carousel
+  justifyContent: 'flex-start',
+  paddingTop: theme.spacing(3),
   
   [theme.breakpoints.down('lg')]: {
     width: '100%',
     maxWidth: '700px',
     textAlign: 'center',
-    marginBottom: theme.spacing(3),
-    paddingTop: 0, // Remove padding in stacked layout
+    marginBottom: theme.spacing(2),
+    paddingTop: 0,
+  },
+  
+  [theme.breakpoints.down('md')]: {
+    marginBottom: theme.spacing(1.5),
+  },
+  
+  [theme.breakpoints.down('sm')]: {
+    marginBottom: theme.spacing(1),
   },
 }));
 
@@ -99,16 +91,15 @@ export const HeroContent = styled(Box)(({ theme }) => ({
  * Main title in the hero section with fluid typography and mixed colors
  */
 export const HeroTitle = styled(Typography)(({ theme }) => ({
-  fontWeight: 600, // Reduced from 800 to 600
-  // Fluid typography formula: calc(min size + (max size - min size) * ((viewport width - min width) / (max width - min width)))
-  fontSize: 'clamp(2rem, 1.3rem + 2.5vw, 3.5rem)',
+  fontWeight: 600,
+  fontSize: 'clamp(1.7rem, 1.1rem + 2vw, 3rem)',
   color: theme.palette.text.primary,
   marginBottom: theme.spacing(2),
-  lineHeight: 1.2, // Increased from 1.1 to 1.2 for better readability
+  lineHeight: 1.1,
   
   '& .highlight': {
     color: theme.palette.primary.main,
-    fontWeight: 700, // Slightly bolder for highlighted text
+    fontWeight: 700,
   },
   
   [theme.breakpoints.down('sm')]: {
@@ -120,18 +111,16 @@ export const HeroTitle = styled(Typography)(({ theme }) => ({
  * Subtitle in the hero section with fluid typography
  */
 export const HeroSubtitle = styled(Typography)(({ theme }) => ({
-  fontWeight: 400, // Reduced from 500 to 400
-  // Fluid typography for subtitle
+  fontWeight: 400,
   fontSize: 'clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem)',
   color: theme.palette.text.secondary,
   marginBottom: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
-  lineHeight: 1.5, // Increased for better readability
+  lineHeight: 1.5,
   letterSpacing: '0.01em',
   
-  // Using the same highlight style as in the title
   '& .highlight': {
     color: theme.palette.primary.main,
-    fontWeight: 600, // Slightly bolder for highlighted text
+    fontWeight: 600,
   },
   
   [theme.breakpoints.down('sm')]: {
@@ -144,42 +133,46 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
  */
 export const CarouselContainer = styled(Box)(({ theme }) => ({
   position: 'relative',
-  width: '45%', // Keep your existing width
-  // Use aspect-ratio property for modern browsers
-  aspectRatio: '1/1', // Changed to 1:1 (square) for better head shots
+  width: '35%',
+  aspectRatio: '1/1',
   overflow: 'hidden',
-  borderRadius: theme.shape.borderRadius * 2, // Keep your existing border radius
-  boxShadow: theme.palette.mode === 'dark' 
-    ? '0 10px 30px rgba(0,0,0,0.3)' 
+  borderRadius: theme.shape.borderRadius * 2,
+  boxShadow: theme.palette.mode === 'dark'
+    ? '0 10px 30px rgba(0,0,0,0.3)'
     : '0 10px 30px rgba(0,0,0,0.15)',
   
-  // Fallback for browsers that don't support aspect-ratio
   '&::before': {
     content: '""',
     display: 'block',
-    paddingTop: '100%', // 1:1 aspect ratio (square)
+    paddingTop: '100%',
   },
   
   [theme.breakpoints.down('lg')]: {
     width: '100%',
-    maxWidth: '550px', // Adjusted for square format
+    maxWidth: '450px',
     marginTop: theme.spacing(2),
   },
   
   [theme.breakpoints.down('md')]: {
-    maxWidth: '450px', // Adjusted for square format
+    maxWidth: '350px',
+    marginTop: theme.spacing(1.5),
   },
   
   [theme.breakpoints.down('sm')]: {
-    maxWidth: '85%', // Keep your existing value
-    aspectRatio: '1/1', // Keep square aspect ratio
+    maxWidth: '70%',
+    aspectRatio: '1/1',
+    marginTop: theme.spacing(1),
     
     '&::before': {
-      paddingTop: '100%', // 1:1 aspect ratio (square)
+      paddingTop: '100%',
     },
   },
   
-  // Remove fixed heights and let aspect ratio control the height
+  '@media (max-width: 400px)': {
+    maxWidth: '60%',
+    marginTop: theme.spacing(0.5),
+  },
+  
   '@supports (aspect-ratio: 1/1)': {
     '&::before': {
       display: 'none',
@@ -206,6 +199,6 @@ export const CarouselImage = styled('img')(({ theme }) => ({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  objectPosition: 'center', // Ensure the face is centered
+  objectPosition: 'center',
   filter: theme.palette.mode === 'dark' ? 'brightness(0.85)' : 'none',
 }));

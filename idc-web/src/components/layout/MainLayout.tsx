@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Toolbar } from '@mui/material';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import Topbar from './TopBar';
 import LeftSidebar from './LeftSidebar';
 import Footer from './Footer';
@@ -18,6 +18,10 @@ const MainLayout = () => {
   const [desktopOpen, setDesktopOpen] = useState(true);
   // Width of the sidebar when open
   const drawerWidth = 240;
+  
+  // Get current location to check if we're on the home page
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   /**
    * Toggles the mobile sidebar visibility
@@ -58,7 +62,8 @@ const MainLayout = () => {
           component='main'
           sx={{
             flexGrow: 1,
-            p: 3,
+            // Conditional padding for home page
+            p: isHomePage ? { xs: 0, sm: 0, md: 0 } : 3,
             width: { md: `calc(100% - ${desktopOpen ? drawerWidth : 0}px)` },
             marginLeft: { md: desktopOpen ? `${drawerWidth}px` : 0 },
             transition: (theme) =>
@@ -73,7 +78,6 @@ const MainLayout = () => {
           <Outlet />
         </Box>
       </Box>
-
       {/* Footer */}
       <Footer />
     </Box>
