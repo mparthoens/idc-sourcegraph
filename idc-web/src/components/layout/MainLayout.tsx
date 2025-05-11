@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Box, Toolbar } from '@mui/material';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Topbar from './TopBar';
 import LeftSidebar from './LeftSidebar';
 import Footer from './Footer';
@@ -18,10 +18,6 @@ const MainLayout = () => {
   const [desktopOpen, setDesktopOpen] = useState(true);
   // Width of the sidebar when open
   const drawerWidth = 240;
-  
-  // Get current location to check if we're on the home page
-  const location = useLocation();
-  const isHomePage = location.pathname === '/';
 
   /**
    * Toggles the mobile sidebar visibility
@@ -62,15 +58,13 @@ const MainLayout = () => {
           component='main'
           sx={{
             flexGrow: 1,
-            // Conditional padding for home page
-            p: isHomePage ? { xs: 0, sm: 0, md: 0 } : 3,
-            width: { md: `calc(100% - ${desktopOpen ? drawerWidth : 0}px)` },
-            marginLeft: { md: desktopOpen ? `${drawerWidth}px` : 0 },
-            transition: (theme) =>
-              theme.transitions.create(['margin', 'width'], {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen,
-              }),
+            p: 3,
+            // Remove the margin-left completely
+            marginLeft: '0 !important',
+            // Set the width to 100% to fill the available space
+            width: '100%',
+            // Use a class name to help with debugging
+            className: 'main-content-area',
           }}>
           {/* Toolbar spacer to push content below the app bar */}
           <Toolbar />
