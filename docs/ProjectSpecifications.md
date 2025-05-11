@@ -280,6 +280,7 @@ All developments must be available in 4 languages:
 - Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
 - Focusing on idc-web
 - Work on Home page.
+- Do not use I18n for now
 - Use my own images for the carousel
 
   

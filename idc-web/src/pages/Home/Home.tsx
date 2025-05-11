@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box, useMediaQuery } from '@mui/material';
+import { useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
   HeroContent,
@@ -12,29 +12,26 @@ import {
   PageContainer
 } from './Home.styled';
 
+// Import your own images
+import cat01Image from '../../assets/images/carousel/cat01.jpg';
+import horse01Image from '../../assets/images/carousel/horse01.jpg';
+import turtle01Image from '../../assets/images/carousel/turtle01.jpg';
+
 /**
  * Array of companion animal images for the carousel
  */
 const animalImages = [
   {
-    url: 'https://images.unsplash.com/photo-1583511655826-05700442b31b',
-    alt: 'Close-up of a dog\'s face'
+    url: cat01Image,
+    alt: 'Cat'
   },
   {
-    url: 'https://images.unsplash.com/photo-1548802673-380ab8ebc7b7',
-    alt: 'Close-up of a cat\'s face'
+    url: horse01Image,
+    alt: 'Horse'
   },
-  {
-    url: 'https://images.unsplash.com/photo-1598974357809-112c788eba71',
-    alt: 'Close-up of a horse\'s head'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1611689037241-d8dfe4280f2e',
-    alt: 'Close-up of an eagle\'s head'
-  },
-  {
-    url: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3',
-    alt: 'Close-up of a parrot\'s head'
+    {
+    url: turtle01Image,
+    alt: 'Turtle'
   }
 ];
 
@@ -74,7 +71,7 @@ const Home: React.FC = () => {
       <ContentWrapper isStacked={isStacked}>
         <HeroContent>
           <HeroTitle>
-            Companion Animals <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
+            Companion Animal <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
           </HeroTitle>
           <HeroSubtitle>
             <span className="highlight">Protect</span> your <span className="highlight">beloved companion</span> with our <span className="highlight">secure, reliable</span> microchip registration system. <span className="highlight">Reunite faster</span> if they ever go missing.
