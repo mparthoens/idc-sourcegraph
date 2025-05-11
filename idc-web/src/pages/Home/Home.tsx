@@ -75,14 +75,15 @@ const Home: React.FC = () => {
       <ContentWrapper isStacked={isStacked}>
         <HeroContent>
           <HeroTitle>
-            Pet <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
+          <span className="highlight">Companion Animals</span> Microchip Registration & Database.
           </HeroTitle>
           <HeroSubtitle>
             Protect your beloved companion with our secure, reliable microchip registration system. Reunite faster if they ever go missing.
           </HeroSubtitle>
-          <ActionButton variant="contained">
-            Register Your Pet
-          </ActionButton>
+                    <HeroSubtitle>
+           <span className="highlight"> Check with your Vet.</span>
+          </HeroSubtitle>
+
         </HeroContent>
 
         <CarouselContainer>

@@ -277,6 +277,7 @@ All developments must be available in 4 languages:
   - a carousel with companion animals images with automatic scrolling (no button) cat, dog, horse, eagle, parrot, pig, fish, turtle
 
 ### 9.8 (IN PROGRESS)
+- Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
 - Focusing on idc-web
 - Work on Home page.
 - Use my own images for the carousel
