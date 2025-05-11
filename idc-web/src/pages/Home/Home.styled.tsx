@@ -1,5 +1,5 @@
 import { styled } from '@mui/material/styles';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 interface ContentWrapperProps {
   isStacked?: boolean;
@@ -125,24 +125,13 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
   fontSize: 'clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem)',
   color: theme.palette.text.secondary,
   marginBottom: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
-  lineHeight: 1.4, // Added for better readability
+  lineHeight: 1.5, // Increased for better readability
+  letterSpacing: '0.01em',
   
-  '& .emphasis': {
-    fontWeight: 600,
-    color: theme.palette.text.primary,
-    position: 'relative',
-    display: 'inline-block',
-    
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      width: '100%',
-      height: '2px',
-      background: `linear-gradient(90deg, transparent, ${theme.palette.primary.main} 50%, transparent)`,
-      opacity: 0.5,
-    }
+  // Using the same highlight style as in the title
+  '& .highlight': {
+    color: theme.palette.primary.main,
+    fontWeight: 600, // Slightly bolder for highlighted text
   },
   
   [theme.breakpoints.down('sm')]: {
@@ -219,37 +208,4 @@ export const CarouselImage = styled('img')(({ theme }) => ({
   objectFit: 'cover',
   objectPosition: 'center', // Ensure the face is centered
   filter: theme.palette.mode === 'dark' ? 'brightness(0.85)' : 'none',
-}));
-
-/**
- * Action button styling with responsive text
- */
-export const ActionButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.primary.main,
-  color: theme.palette.primary.contrastText,
-  // Responsive padding
-  padding: 'clamp(0.75rem, 0.6rem + 0.5vw, 1.5rem) clamp(2.5rem, 2rem + 1vw, 4rem)',
-  // Responsive font size
-  fontSize: 'clamp(0.9rem, 0.8rem + 0.3vw, 1.1rem)',
-  fontWeight: 600,
-  borderRadius: 30,
-  textTransform: 'none',
-  boxShadow: theme.palette.mode === 'dark'
-    ? `0 4px 10px ${theme.palette.primary.dark}`
-    : `0 4px 10px rgba(0,0,0,0.2)`,
-  alignSelf: 'flex-start',
-  background: theme.palette.mode === 'dark'
-    ? 'linear-gradient(135deg, #4a95ff 0%, #3570d8 100%)'
-    : 'linear-gradient(135deg, #3a86ff 0%, #2667cc 100%)',
-  
-  '&:hover': {
-    backgroundColor: theme.palette.primary.dark,
-    boxShadow: theme.palette.mode === 'dark'
-      ? `0 6px 15px ${theme.palette.primary.dark}`
-      : `0 6px 15px rgba(0,0,0,0.3)`,
-  },
-  
-  [theme.breakpoints.down('lg')]: {
-    alignSelf: 'center',
-  },
 }));

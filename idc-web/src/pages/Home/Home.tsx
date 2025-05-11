@@ -9,7 +9,6 @@ import {
   CarouselImage,
   CarouselImageWrapper,
   ContentWrapper,
-  ActionButton,
   PageContainer
 } from './Home.styled';
 
@@ -78,7 +77,7 @@ const Home: React.FC = () => {
             Companion Animals <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
           </HeroTitle>
           <HeroSubtitle>
-            Protect your <span className="emphasis">beloved companion</span> with our <span className="emphasis">secure, reliable</span> microchip registration system. <span className="emphasis">Reunite faster</span> if they ever go missing.
+            <span className="highlight">Protect</span> your <span className="highlight">beloved companion</span> with our <span className="highlight">secure, reliable</span> microchip registration system. <span className="highlight">Reunite faster</span> if they ever go missing.
           </HeroSubtitle>
         </HeroContent>
 
