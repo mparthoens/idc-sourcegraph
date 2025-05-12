@@ -200,3 +200,66 @@ export const CarouselImage = styled('img')(({ theme }) => ({
   objectPosition: 'center',
   filter: theme.palette.mode === 'dark' ? 'brightness(0.85)' : 'none',
 }));
+
+// Add these new styled components to your existing Home.styled.ts file
+
+/** 
+ * Container for the search section 
+ */
+export const SearchSectionContainer = styled(Box)(({ theme }) => ({
+  width: '100%',
+  padding: theme.spacing(4, 0),
+  backgroundColor: theme.palette.mode === 'dark' 
+    ? theme.palette.background.default 
+    : theme.palette.grey[50],
+  borderTop: `1px solid ${theme.palette.divider}`,
+  borderBottom: `1px solid ${theme.palette.divider}`,
+  
+  [theme.breakpoints.down('md')]: {
+    padding: theme.spacing(3, 0),
+  },
+  
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(2, 0),
+  },
+}));
+
+/** 
+ * Wrapper for the search section content 
+ */
+export const SearchSectionWrapper = styled(Box)(({ theme }) => ({
+  maxWidth: '1200px',
+  margin: '0 auto',
+  padding: theme.spacing(0, 3),
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  textAlign: 'center',
+  
+  [theme.breakpoints.down('sm')]: {
+    padding: theme.spacing(0, 2),
+  },
+}));
+
+/** 
+ * Title for the search section 
+ */
+export const SearchSectionTitle = styled(Typography)(({ theme }) => ({
+  fontSize: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
+  fontWeight: 600,
+  marginBottom: theme.spacing(1),
+  color: theme.palette.primary.main, // Changed to primary color
+}));
+
+/** 
+ * Subtitle for the search section 
+ */
+export const SearchSectionSubtitle = styled(Typography)(({ theme }) => ({
+  fontSize: 'clamp(1rem, 0.8rem + 0.6vw, 1.25rem)',
+  color: theme.palette.text.secondary,
+  marginBottom: theme.spacing(3),
+  maxWidth: '800px',
+}));
+
+
+

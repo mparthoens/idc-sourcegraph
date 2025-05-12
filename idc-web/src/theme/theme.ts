@@ -31,10 +31,10 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
         palette: {
             mode,
             primary: {
-                // Updated to a more vibrant blue
-                main: mode === 'light' ? '#3a86ff' : '#4a95ff',
-                light: mode === 'light' ? '#6ea8ff' : '#7db5ff',
-                dark: mode === 'light' ? '#2667cc' : '#3570d8',
+                // Updated to a darker blue
+                main: mode === 'light' ? '#1a56cc' : '#2a65dd',
+                light: mode === 'light' ? '#4a78dd' : '#5a87ee',
+                dark: mode === 'light' ? '#0c3b99' : '#1c4ab0',
                 contrastText: '#fff',
             },
             secondary: {
@@ -46,9 +46,9 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
             },
             accent: {
                 // Keep accent color aligned with primary
-                main: mode === 'light' ? '#3a86ff' : '#4a95ff',
-                light: mode === 'light' ? '#6ea8ff' : '#7db5ff',
-                dark: mode === 'light' ? '#2667cc' : '#3570d8',
+                main: mode === 'light' ? '#1a56cc' : '#2a65dd',
+                light: mode === 'light' ? '#4a78dd' : '#5a87ee',
+                dark: mode === 'light' ? '#0c3b99' : '#1c4ab0',
                 contrastText: '#fff',
             },
             background: {
@@ -151,9 +151,9 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                         props: { variant: 'accent' },
                         style: {
                             color: '#fff',
-                            backgroundColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
+                            backgroundColor: mode === 'light' ? '#1a56cc' : '#2a65dd',
                             '&:hover': {
-                                backgroundColor: mode === 'light' ? '#2667cc' : '#3570d8',
+                                backgroundColor: mode === 'light' ? '#0c3b99' : '#1c4ab0',
                             },
                         },
                     },
@@ -166,27 +166,30 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                         textTransform: 'none',
                         fontWeight: 600, // Slightly bolder
                     },
-                    contained: {
-                        boxShadow: mode === 'light' 
-                            ? '0 4px 10px rgba(58, 134, 255, 0.24)'
-                            : '0 4px 10px rgba(74, 149, 255, 0.24)',
-                        '&:hover': {
-                            boxShadow: mode === 'light'
-                                ? '0 6px 15px rgba(58, 134, 255, 0.32)'
-                                : '0 6px 15px rgba(74, 149, 255, 0.32)',
-                            backgroundColor: mode === 'light' ? '#2667cc' : '#3570d8',
-                        },
-                        background: mode === 'light'
-                            ? 'linear-gradient(135deg, #3a86ff 0%, #2667cc 100%)'
-                            : 'linear-gradient(135deg, #4a95ff 0%, #3570d8 100%)',
-                    },
+// In the MuiButton styleOverrides, contained section:
+
+contained: {
+    boxShadow: mode === 'light'
+        ? '0 4px 10px rgba(26, 86, 204, 0.24)'
+        : '0 4px 10px rgba(42, 101, 221, 0.24)',  // Fixed the ternary operator
+    '&:hover': {
+        boxShadow: mode === 'light'
+            ? '0 6px 15px rgba(26, 86, 204, 0.32)'
+            : '0 6px 15px rgba(42, 101, 221, 0.32)',
+        backgroundColor: mode === 'light' ? '#0c3b99' : '#1c4ab0',
+    },
+    background: mode === 'light'
+        ? 'linear-gradient(135deg, #1a56cc 0%, #0c3b99 100%)'
+        : 'linear-gradient(135deg, #2a65dd 0%, #1c4ab0 100%)',
+},
+
                     outlined: {
                         borderWidth: 1,
                         '&:hover': {
                             borderWidth: 1,
                             backgroundColor: mode === 'light'
-                                ? 'rgba(58, 134, 255, 0.05)'
-                                : 'rgba(74, 149, 255, 0.05)',
+                                ? 'rgba(26, 86, 204, 0.05)'
+                                : 'rgba(42, 101, 221, 0.05)',
                         },
                     },
                 },
@@ -253,7 +256,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                             },
                             '&.Mui-focused fieldset': {
                                 borderWidth: 2,
-                                borderColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
+                                borderColor: mode === 'light' ? '#1a56cc' : '#2a65dd',
                             },
                         },
                     },
@@ -290,12 +293,12 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                         borderRadius: 8,
                         '&.Mui-selected': {
                             backgroundColor: mode === 'light'
-                                ? 'rgba(58, 134, 255, 0.08)'
-                                : 'rgba(74, 149, 255, 0.08)',
+                                ? 'rgba(26, 86, 204, 0.08)'
+                                : 'rgba(42, 101, 221, 0.08)',
                             '&:hover': {
                                 backgroundColor: mode === 'light'
-                                    ? 'rgba(58, 134, 255, 0.12)'
-                                    : 'rgba(74, 149, 255, 0.12)',
+                                    ? 'rgba(26, 86, 204, 0.12)'
+                                    : 'rgba(42, 101, 221, 0.12)',
                             },
                         },
                         '&:hover': {
@@ -328,7 +331,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                             transform: 'translateX(16px)',
                             color: '#fff',
                             '& + .MuiSwitch-track': {
-                                backgroundColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
+                                backgroundColor: mode === 'light' ? '#1a56cc' : '#2a65dd',
                                 opacity: 1,
                                 border: 'none',
                             },
@@ -371,5 +374,6 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
 
     // Make typography responsive
     theme = responsiveFontSizes(theme);
+
     return theme;
 };

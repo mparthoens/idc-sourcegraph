@@ -276,12 +276,22 @@ All developments must be available in 4 languages:
   - a text: Companion Animal Microchip Registration & Database.Protect Your Animal Today
   - a carousel with companion animals images with automatic scrolling (no button) cat, dog, horse, eagle, parrot, pig, fish, turtle
 
-### 9.8 (IN PROGRESS)
+### 9.8 (COMPLETED)
 - Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
 - Focusing on idc-web
 - Work on Home page.
 - Do not use I18n for now
 - Use my own images for the carousel
 
+### 9.9 (IN PROGRESS)
+- Always check code on githhub https://github.com/mparthoens/idc-sourcegraph branch develop before generating code.
+- Ask me to get current code before amend
+- Focusing on idc-web
+- Work on Home page.
+- Do not use I18n for now
+- Want to implement a DB seach on home Page. It is the main goal of this website so let's try to find the best place on screen to put it.
+- Shoud show an input field with a button to search. Enter a chip number and click on the button to search.
+- In the future we will use intensiveley form management (validation, error handling, etc).
+- What is the best framework to use for this?
   
 

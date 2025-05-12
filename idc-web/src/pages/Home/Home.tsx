@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useMediaQuery, Box } from '@mui/material';
+import { useMediaQuery, Box, Snackbar, Alert } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import {
   HeroContent,
@@ -9,8 +9,16 @@ import {
   CarouselImage,
   CarouselImageWrapper,
   ContentWrapper,
-  PageContainer
+  PageContainer,
+  // Add the new styled components
+  SearchSectionContainer,
+  SearchSectionWrapper,
+  SearchSectionTitle,
+  SearchSectionSubtitle
 } from './Home.styled';
+
+// Import the ChipSearchForm component
+import ChipSearchForm from '../../components/forms/ChipSearchForm';
 
 // Import your own images
 import dog01Image from '../../assets/images/carousel/dog01.jpg';
@@ -90,12 +98,19 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 /** Home Component */
 const Home: React.FC = () => {
   // Create a randomized array of images on component mount
-  const [animalImages] = useState(() => shuffleArray(originalAnimalImages)); 
+  const [animalImages] = useState(() => shuffleArray(originalAnimalImages));
   
   // Start with a random image index
   const [currentImageIndex, setCurrentImageIndex] = useState(
     () => Math.floor(Math.random() * animalImages.length)
   );
+  
+  // State for search notification
+  const [searchNotification, setSearchNotification] = useState({
+    open: false,
+    message: '',
+    severity: 'info' as 'success' | 'info' | 'warning' | 'error'
+  });
   
   const carouselIntervalRef = useRef<number | null>(null);
   const theme = useTheme();
@@ -114,6 +129,23 @@ const Home: React.FC = () => {
     };
   }, [animalImages.length]);
 
+  // Handle chip search
+  const handleChipSearch = (chipNumber: string) => {
+    console.log('Searching for chip:', chipNumber);
+    // In the future, this will call an API endpoint
+    // For now, just show a notification
+    setSearchNotification({
+      open: true,
+      message: `Searching for chip number: ${chipNumber}`,
+      severity: 'info'
+    });
+  };
+
+  // Handle closing the notification
+  const handleCloseNotification = () => {
+    setSearchNotification(prev => ({ ...prev, open: false }));
+  };
+
   return (
     // Wrapper box with negative margin to counteract the MainLayout padding
     <Box sx={{
@@ -123,6 +155,7 @@ const Home: React.FC = () => {
       overflow: 'hidden'
     }}>
       <PageContainer>
+        {/* Hero Section */}
         <ContentWrapper isStacked={isStacked}>
           <HeroContent>
             <HeroTitle>
@@ -150,7 +183,36 @@ const Home: React.FC = () => {
             ))}
           </CarouselContainer>
         </ContentWrapper>
+        
+        {/* Search Section */}
+        <SearchSectionContainer>
+          <SearchSectionWrapper>
+            <SearchSectionTitle sx={{ color: theme.palette.primary.main }}>
+              Find Animal & Owner Details
+            </SearchSectionTitle>
+            <SearchSectionSubtitle>
+              Enter <span style={{ fontWeight: 'bold', color: theme.palette.primary.main }}>microchip number</span> to access their information and verify registration status.
+            </SearchSectionSubtitle>
+            <ChipSearchForm onSearch={handleChipSearch} />
+          </SearchSectionWrapper>
+        </SearchSectionContainer>
       </PageContainer>
+      
+      {/* Notification for search results */}
+      <Snackbar 
+        open={searchNotification.open} 
+        autoHideDuration={6000} 
+        onClose={handleCloseNotification}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert 
+          onClose={handleCloseNotification} 
+          severity={searchNotification.severity}
+          sx={{ width: '100%' }}
+        >
+          {searchNotification.message}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 };
