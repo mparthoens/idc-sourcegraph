@@ -14,8 +14,8 @@ export const PageContainer = styled(Box)(({ theme }) => ({
   left: -24, // Negative of the parent's padding (p: 3 = 24px)
   width: 'calc(100% + 48px)', // 100% + left padding + right padding
   display: 'flex',
-  flexDirection: 'column',
- 
+  flexDirection: 'column', 
+  
   // Adjust for different screen sizes
   [theme.breakpoints.down('sm')]: {
     left: -16, // Smaller padding on mobile
@@ -41,7 +41,7 @@ export const ContentWrapper = styled(Box, {
   // Handle stacked layout (tablet and below)
   ...(isStacked && {
     flexDirection: 'column',
-    gap: theme.spacing(3),
+    gap: theme.spacing(1), // Reduced from 3 to 1
   }),
  
   [theme.breakpoints.down('lg')]: {
@@ -74,16 +74,16 @@ export const HeroContent = styled(Box)(({ theme }) => ({
     width: '100%',
     maxWidth: '700px',
     textAlign: 'center',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(0.5), // Reduced from 2 to 0.5
     paddingTop: 0,
   },
  
   [theme.breakpoints.down('md')]: {
-    marginBottom: theme.spacing(1.5),
+    marginBottom: theme.spacing(0.5), // Reduced from 1.5 to 0.5
   },
  
   [theme.breakpoints.down('sm')]: {
-    marginBottom: theme.spacing(1),
+    marginBottom: theme.spacing(0.5), // Reduced from 1 to 0.5
   },
 }));
 
@@ -114,7 +114,7 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: 'clamp(1.1rem, 0.9rem + 0.8vw, 1.5rem)',
   color: theme.palette.text.secondary,
-  marginBottom: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
+  marginBottom: 'clamp(0.5rem, 0.3rem + 0.5vw, 1rem)', // Reduced margin
   lineHeight: 1.5,
   letterSpacing: '0.01em',
  
@@ -124,7 +124,7 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
   },
  
   [theme.breakpoints.down('sm')]: {
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(0.5), // Reduced from 2 to 0.5
   },
 }));
 
