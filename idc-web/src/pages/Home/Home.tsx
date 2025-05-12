@@ -23,7 +23,7 @@ import parrot01Image from '../../assets/images/carousel/parrot01.png';
 import eagle01Image from '../../assets/images/carousel/eagle01.jpg';
 import ferret01Image from '../../assets/images/carousel/ferret01.jpg';
 import fish01Image from '../../assets/images/carousel/fish01.jpg';
-import chameleon1Image from '../../assets/images/carousel/chameleon01.jpg';
+import rabbitImage from '../../assets/images/carousel/rabbit01.jpg';
 
 /** Original array of companion animal images for the carousel */
 const originalAnimalImages = [
@@ -68,8 +68,8 @@ const originalAnimalImages = [
     alt: 'Fish'
   },
   {
-    url: chameleon1Image,
-    alt: 'Chameleon'
+    url: rabbitImage,
+    alt: 'rabbit'
   }
 ];
 
@@ -99,8 +99,7 @@ const Home: React.FC = () => {
   
   const carouselIntervalRef = useRef<number | null>(null);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const isStacked = useMediaQuery(theme.breakpoints.down('lg'));
+   const isStacked = useMediaQuery(theme.breakpoints.down('lg'));
   
   useEffect(() => {
     carouselIntervalRef.current = window.setInterval(() => {
@@ -126,10 +125,10 @@ const Home: React.FC = () => {
         <ContentWrapper isStacked={isStacked}>
           <HeroContent>
             <HeroTitle>
-              All Companion Animals <span className="highlight">Microchip</span> Registration & <span className="highlight">Database</span>
+              All Companion Animals Microchip Registration
             </HeroTitle>
             <HeroSubtitle>
-              <span className="highlight">Protect</span> your <span className="highlight">beloved companion</span> with our <span className="highlight">secure, reliable</span> microchip registration system. <span className="highlight">Reunite faster</span> if they ever go missing.
+              Protect your beloved companion with our secure, reliable microchip registration system. Reunite faster if they ever go missing.
             </HeroSubtitle>
           </HeroContent>
           <CarouselContainer>

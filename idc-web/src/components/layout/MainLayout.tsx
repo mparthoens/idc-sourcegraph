@@ -16,8 +16,6 @@ const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   // State for controlling desktop sidebar visibility
   const [desktopOpen, setDesktopOpen] = useState(true);
-  // Width of the sidebar when open
-  const drawerWidth = 240;
 
   /**
    * Toggles the mobile sidebar visibility
