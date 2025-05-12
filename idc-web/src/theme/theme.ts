@@ -31,33 +31,33 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
         palette: {
             mode,
             primary: {
-                // Apple blue
-                main: mode === 'light' ? '#0071e3' : '#2997ff',
-                light: mode === 'light' ? '#47a9ff' : '#64d2ff',
-                dark: mode === 'light' ? '#0058b0' : '#0077cc',
+                // Updated to a more vibrant blue
+                main: mode === 'light' ? '#3a86ff' : '#4a95ff',
+                light: mode === 'light' ? '#6ea8ff' : '#7db5ff',
+                dark: mode === 'light' ? '#2667cc' : '#3570d8',
                 contrastText: '#fff',
             },
             secondary: {
-                // Apple gray
-                main: '#86868b',
-                light: '#a1a1a6',
-                dark: '#6e6e73',
+                // Updated to a coral red for better contrast with blue
+                main: mode === 'light' ? '#ff6b6b' : '#ff7e7e',
+                light: mode === 'light' ? '#ff9e9e' : '#ffacac',
+                dark: mode === 'light' ? '#c73e3e' : '#d44e4e',
                 contrastText: '#fff',
             },
             accent: {
-                // Apple accent color (sometimes used for CTAs)
-                main: mode === 'light' ? '#0071e3' : '#2997ff',
-                light: mode === 'light' ? '#47a9ff' : '#64d2ff',
-                dark: mode === 'light' ? '#0058b0' : '#0077cc',
+                // Keep accent color aligned with primary
+                main: mode === 'light' ? '#3a86ff' : '#4a95ff',
+                light: mode === 'light' ? '#6ea8ff' : '#7db5ff',
+                dark: mode === 'light' ? '#2667cc' : '#3570d8',
                 contrastText: '#fff',
             },
             background: {
-                default: mode === 'light' ? '#f5f5f7' : '#1d1d1f',
+                default: mode === 'light' ? '#f8faff' : '#1d1d1f', // Slightly blue-tinted in light mode
                 paper: mode === 'light' ? '#ffffff' : '#2c2c2e',
             },
             text: {
-                primary: mode === 'light' ? '#1d1d1f' : '#f5f5f7',
-                secondary: mode === 'light' ? '#86868b' : '#a1a1a6',
+                primary: mode === 'light' ? '#2b3445' : '#f5f5f7', // Darker blue-gray in light mode
+                secondary: mode === 'light' ? '#637381' : '#a1a1a6', // Medium gray in light mode
             },
             error: {
                 main: '#ff3b30', // Apple red
@@ -126,11 +126,13 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                 fontWeight: 400,
                 fontSize: '1rem',
                 letterSpacing: '0em',
+                lineHeight: 1.5,
             },
             body2: {
                 fontWeight: 400,
                 fontSize: '0.875rem',
                 letterSpacing: '0em',
+                lineHeight: 1.5,
             },
             button: {
                 fontWeight: 500,
@@ -149,35 +151,42 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                         props: { variant: 'accent' },
                         style: {
                             color: '#fff',
-                            backgroundColor: mode === 'light' ? '#0071e3' : '#2997ff',
+                            backgroundColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
                             '&:hover': {
-                                backgroundColor: mode === 'light' ? '#0062c3' : '#1e87e8',
+                                backgroundColor: mode === 'light' ? '#2667cc' : '#3570d8',
                             },
                         },
                     },
                 ],
                 styleOverrides: {
                     root: {
-                        borderRadius: 8,
-                        padding: '8px 16px',
+                        borderRadius: 30, // More rounded buttons
+                        padding: '10px 20px', // Slightly larger padding
                         transition: 'all 0.2s ease-in-out',
                         textTransform: 'none',
-                        fontWeight: 500,
+                        fontWeight: 600, // Slightly bolder
                     },
                     contained: {
-                        boxShadow: 'none',
+                        boxShadow: mode === 'light' 
+                            ? '0 4px 10px rgba(58, 134, 255, 0.24)'
+                            : '0 4px 10px rgba(74, 149, 255, 0.24)',
                         '&:hover': {
-                            boxShadow: 'none',
-                            backgroundColor: mode === 'light' ? '#0062c3' : '#1e87e8',
+                            boxShadow: mode === 'light'
+                                ? '0 6px 15px rgba(58, 134, 255, 0.32)'
+                                : '0 6px 15px rgba(74, 149, 255, 0.32)',
+                            backgroundColor: mode === 'light' ? '#2667cc' : '#3570d8',
                         },
+                        background: mode === 'light'
+                            ? 'linear-gradient(135deg, #3a86ff 0%, #2667cc 100%)'
+                            : 'linear-gradient(135deg, #4a95ff 0%, #3570d8 100%)',
                     },
                     outlined: {
                         borderWidth: 1,
                         '&:hover': {
                             borderWidth: 1,
-                            backgroundColor: mode === 'light' 
-                                ? 'rgba(0, 113, 227, 0.05)' 
-                                : 'rgba(41, 151, 255, 0.05)',
+                            backgroundColor: mode === 'light'
+                                ? 'rgba(58, 134, 255, 0.05)'
+                                : 'rgba(74, 149, 255, 0.05)',
                         },
                     },
                 },
@@ -186,15 +195,15 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                 styleOverrides: {
                     root: {
                         boxShadow: mode === 'light'
-                            ? '0px 2px 8px rgba(0, 0, 0, 0.05)'
-                            : '0px 2px 8px rgba(0, 0, 0, 0.2)',
-                        borderRadius: 12,
+                            ? '0px 8px 24px rgba(145, 158, 171, 0.16)'
+                            : '0px 8px 24px rgba(0, 0, 0, 0.2)',
+                        borderRadius: 16, // More rounded cards
                         transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
                         '&:hover': {
                             transform: 'translateY(-4px)',
                             boxShadow: mode === 'light'
-                                ? '0px 4px 12px rgba(0, 0, 0, 0.1)'
-                                : '0px 4px 12px rgba(0, 0, 0, 0.3)',
+                                ? '0px 12px 32px rgba(145, 158, 171, 0.2)'
+                                : '0px 12px 32px rgba(0, 0, 0, 0.3)',
                         },
                     },
                 },
@@ -204,14 +213,14 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                     root: {
                         boxShadow: 'none',
                         backgroundImage: 'none',
-                        backgroundColor: mode === 'light' 
-                            ? 'rgba(255, 255, 255, 0.8)' 
+                        backgroundColor: mode === 'light'
+                            ? 'rgba(255, 255, 255, 0.8)'
                             : 'rgba(29, 29, 31, 0.8)',
                         backdropFilter: 'blur(10px)',
                         borderBottom: mode === 'light'
                             ? '1px solid rgba(0, 0, 0, 0.1)'
                             : '1px solid rgba(255, 255, 255, 0.1)',
-                        color: mode === 'light' ? '#1d1d1f' : '#f5f5f7',
+                        color: mode === 'light' ? '#2b3445' : '#f5f5f7',
                     },
                 },
             },
@@ -220,8 +229,8 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                     paper: {
                         borderRight: 'none',
                         backgroundImage: 'none',
-                        backgroundColor: mode === 'light' 
-                            ? 'rgba(255, 255, 255, 0.8)' 
+                        backgroundColor: mode === 'light'
+                            ? 'rgba(255, 255, 255, 0.8)'
                             : 'rgba(44, 44, 46, 0.8)',
                         backdropFilter: 'blur(10px)',
                         boxShadow: mode === 'light'
@@ -244,7 +253,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                             },
                             '&.Mui-focused fieldset': {
                                 borderWidth: 2,
-                                borderColor: mode === 'light' ? '#0071e3' : '#2997ff',
+                                borderColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
                             },
                         },
                     },
@@ -271,7 +280,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                 styleOverrides: {
                     head: {
                         fontWeight: 600,
-                        backgroundColor: mode === 'light' ? '#f5f5f7' : '#2c2c2e',
+                        backgroundColor: mode === 'light' ? '#f8faff' : '#2c2c2e',
                     },
                 },
             },
@@ -280,17 +289,17 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                     root: {
                         borderRadius: 8,
                         '&.Mui-selected': {
-                            backgroundColor: mode === 'light' 
-                                ? 'rgba(0, 113, 227, 0.08)'
-                                : 'rgba(41, 151, 255, 0.08)',
+                            backgroundColor: mode === 'light'
+                                ? 'rgba(58, 134, 255, 0.08)'
+                                : 'rgba(74, 149, 255, 0.08)',
                             '&:hover': {
-                                backgroundColor: mode === 'light' 
-                                    ? 'rgba(0, 113, 227, 0.12)'
-                                    : 'rgba(41, 151, 255, 0.12)',
+                                backgroundColor: mode === 'light'
+                                    ? 'rgba(58, 134, 255, 0.12)'
+                                    : 'rgba(74, 149, 255, 0.12)',
                             },
                         },
                         '&:hover': {
-                            backgroundColor: mode === 'light' 
+                            backgroundColor: mode === 'light'
                                 ? 'rgba(0, 0, 0, 0.04)'
                                 : 'rgba(255, 255, 255, 0.04)',
                         },
@@ -319,7 +328,7 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                             transform: 'translateX(16px)',
                             color: '#fff',
                             '& + .MuiSwitch-track': {
-                                backgroundColor: mode === 'light' ? '#0071e3' : '#2997ff',
+                                backgroundColor: mode === 'light' ? '#3a86ff' : '#4a95ff',
                                 opacity: 1,
                                 border: 'none',
                             },
@@ -344,14 +353,15 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
                 styleOverrides: {
                     root: {
                         backgroundImage: 'none',
+                        borderRadius: 16, // More rounded papers
                     },
                 },
             },
             MuiDivider: {
                 styleOverrides: {
                     root: {
-                        borderColor: mode === 'light' 
-                            ? 'rgba(0, 0, 0, 0.1)' 
+                        borderColor: mode === 'light'
+                            ? 'rgba(0, 0, 0, 0.1)'
                             : 'rgba(255, 255, 255, 0.1)',
                     },
                 },

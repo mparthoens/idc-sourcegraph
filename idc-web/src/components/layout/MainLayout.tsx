@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Topbar from './TopBar';
 import LeftSidebar from './LeftSidebar';
 import Footer from './Footer';
+import '../../styles/layout.css'; // Import the CSS file
 
 /**
  * MainLayout component serves as the primary layout structure for the application.
@@ -16,8 +17,6 @@ const MainLayout = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   // State for controlling desktop sidebar visibility
   const [desktopOpen, setDesktopOpen] = useState(true);
-  // Width of the sidebar when open
-  const drawerWidth = 240;
 
   /**
    * Toggles the mobile sidebar visibility
@@ -59,21 +58,22 @@ const MainLayout = () => {
           sx={{
             flexGrow: 1,
             p: 3,
-            width: { md: `calc(100% - ${desktopOpen ? drawerWidth : 0}px)` },
-            marginLeft: { md: desktopOpen ? `${drawerWidth}px` : 0 },
-            transition: (theme) =>
-              theme.transitions.create(['margin', 'width'], {
-                easing: theme.transitions.easing.sharp,
-                duration: theme.transitions.duration.leavingScreen,
-              }),
+            // Remove the margin-left completely
+            marginLeft: '0 !important',
+            // Set the width to 100% to fill the available space
+            width: '100%',
+            // Display flex to allow centering of content
+            display: 'flex',
+            flexDirection: 'column',
           }}>
           {/* Toolbar spacer to push content below the app bar */}
           <Toolbar />
-          {/* Render the current route's component */}
-          <Outlet />
+          {/* Centered content container */}
+          <Box className="main-content-centered">
+            <Outlet />
+          </Box>
         </Box>
       </Box>
-
       {/* Footer */}
       <Footer />
     </Box>
