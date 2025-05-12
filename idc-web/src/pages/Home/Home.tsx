@@ -73,10 +73,10 @@ const originalAnimalImages = [
   }
 ];
 
-/** 
- * Fisher-Yates (Knuth) shuffle algorithm to randomize array 
- * @param array The array to shuffle 
- * @returns A new shuffled array 
+/**
+ * Fisher-Yates (Knuth) shuffle algorithm to randomize array
+ * @param array The array to shuffle
+ * @returns A new shuffled array
  */
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array];
@@ -99,8 +99,9 @@ const Home: React.FC = () => {
   
   const carouselIntervalRef = useRef<number | null>(null);
   const theme = useTheme();
-   const isStacked = useMediaQuery(theme.breakpoints.down('lg'));
   
+  const isStacked = useMediaQuery(theme.breakpoints.down('lg'));
+
   useEffect(() => {
     carouselIntervalRef.current = window.setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % animalImages.length);
@@ -115,7 +116,7 @@ const Home: React.FC = () => {
 
   return (
     // Wrapper box with negative margin to counteract the MainLayout padding
-    <Box sx={{ 
+    <Box sx={{
       margin: '-24px',
       marginLeft: { xs: '-24px', md: '-24px' }, // Counteract the padding
       width: 'calc(100% + 48px)',
@@ -125,10 +126,10 @@ const Home: React.FC = () => {
         <ContentWrapper isStacked={isStacked}>
           <HeroContent>
             <HeroTitle>
-              All Companion Animals Microchip Registration
+              <span style={{ fontWeight: 'bold', color: theme.palette.primary.main }}>All Companion Animals</span> Microchip Registration
             </HeroTitle>
             <HeroSubtitle>
-              Protect your beloved companion with our secure, reliable microchip registration system. Reunite faster if they ever go missing.
+              Protect your <span style={{ fontWeight: 'bold', color: theme.palette.primary.main }}>beloved companion</span> with our <span style={{ fontWeight: 'bold', color: theme.palette.primary.main }}>secure, reliable</span> microchip registration system. <span style={{ fontWeight: 'bold', color: theme.palette.primary.main }}>Reunite faster</span> if they ever go missing.
             </HeroSubtitle>
           </HeroContent>
           <CarouselContainer>
