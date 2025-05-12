@@ -90,7 +90,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 /** Home Component */
 const Home: React.FC = () => {
   // Create a randomized array of images on component mount
-  const [animalImages] = useState(() => shuffleArray(originalAnimalImages));
+  const [animalImages] = useState(() => shuffleArray(originalAnimalImages)); 
   
   // Start with a random image index
   const [currentImageIndex, setCurrentImageIndex] = useState(
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
   const theme = useTheme();
   
   const isStacked = useMediaQuery(theme.breakpoints.down('lg'));
-
+  
   useEffect(() => {
     carouselIntervalRef.current = window.setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % animalImages.length);
