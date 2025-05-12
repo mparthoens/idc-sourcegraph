@@ -41,7 +41,7 @@ export const ContentWrapper = styled(Box, {
   // Handle stacked layout (tablet and below)
   ...(isStacked && {
     flexDirection: 'column',
-    gap: theme.spacing(1), // Reduced from 3 to 1
+    gap: theme.spacing(0), // Reduced from 3 to 0
   }),
  
   [theme.breakpoints.down('lg')]: {
@@ -74,16 +74,16 @@ export const HeroContent = styled(Box)(({ theme }) => ({
     width: '100%',
     maxWidth: '700px',
     textAlign: 'center',
-    marginBottom: theme.spacing(0.5), // Reduced from 2 to 0.5
+    marginBottom: theme.spacing(0), // Reduced from 2 to 0
     paddingTop: 0,
   },
  
   [theme.breakpoints.down('md')]: {
-    marginBottom: theme.spacing(0.5), // Reduced from 1.5 to 0.5
+    marginBottom: theme.spacing(0), // Reduced from 1.5 to 0
   },
  
   [theme.breakpoints.down('sm')]: {
-    marginBottom: theme.spacing(0.5), // Reduced from 1 to 0.5
+    marginBottom: theme.spacing(0), // Reduced from 1 to 0
   },
 }));
 
@@ -124,7 +124,7 @@ export const HeroSubtitle = styled(Typography)(({ theme }) => ({
   },
  
   [theme.breakpoints.down('sm')]: {
-    marginBottom: theme.spacing(0.5), // Reduced from 2 to 0.5
+    marginBottom: theme.spacing(0), // Reduced from 2 to 0
   },
 }));
 
