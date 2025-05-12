@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import Topbar from './TopBar';
 import LeftSidebar from './LeftSidebar';
 import Footer from './Footer';
+import '../../styles/layout.css'; // Import the CSS file
 
 /**
  * MainLayout component serves as the primary layout structure for the application.
@@ -61,13 +62,16 @@ const MainLayout = () => {
             marginLeft: '0 !important',
             // Set the width to 100% to fill the available space
             width: '100%',
-            // Use a class name to help with debugging
-            className: 'main-content-area',
+            // Display flex to allow centering of content
+            display: 'flex',
+            flexDirection: 'column',
           }}>
           {/* Toolbar spacer to push content below the app bar */}
           <Toolbar />
-          {/* Render the current route's component */}
-          <Outlet />
+          {/* Centered content container */}
+          <Box className="main-content-centered">
+            <Outlet />
+          </Box>
         </Box>
       </Box>
       {/* Footer */}
