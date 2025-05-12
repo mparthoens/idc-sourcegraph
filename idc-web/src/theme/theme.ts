@@ -74,14 +74,16 @@ export const createAppTheme = (mode: PaletteMode): Theme => {
         },
         typography: {
             fontFamily: [
-                '-apple-system',
+                '-apple-system', // Will use SF Pro on Apple devices
                 'BlinkMacSystemFont',
-                'San Francisco',
-                'Helvetica Neue',
+                '"SF Pro Text"', // For Apple devices where -apple-system might not work
+                '"SF Pro Icons"',
+                '"Helvetica Neue"',
                 'Helvetica',
                 'Arial',
                 'sans-serif',
             ].join(','),
+            
             h1: {
                 fontWeight: 600,
                 fontSize: '3.5rem',

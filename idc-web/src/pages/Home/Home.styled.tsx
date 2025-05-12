@@ -245,11 +245,12 @@ export const SearchSectionWrapper = styled(Box)(({ theme }) => ({
  * Title for the search section 
  */
 export const SearchSectionTitle = styled(Typography)(({ theme }) => ({
-  fontSize: 'clamp(1.5rem, 1rem + 1.5vw, 2.5rem)',
+  fontSize: 'clamp(1.2rem, 0.8rem + 1.2vw, 2rem)',
   fontWeight: 600,
   marginBottom: theme.spacing(1),
-  color: theme.palette.primary.main, // Changed to primary color
+  color: theme.palette.primary.main,
 }));
+
 
 /** 
  * Subtitle for the search section 
